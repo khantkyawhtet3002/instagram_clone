@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>InstaClone</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+          <p>
+        <img src="/assets/instalogo.png" class="instalogo">
+        </p>
+        <p>
+      <img src="/assets/instatxt.png" class="instatxt">
+      </p>
+      <p>
+    <img src="/assets/searchbar.png" class="searchbar">
+    </p>
+      <div class="content">
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, class: "#{key}") %>
+        <% end %>
+        <% if logged_in? %>
+          <button type="button" class="btn3"><%= link_to "My Post", pictures_path %></button>
+          <button type="button" class="btn2"><%= link_to "Logout", session_path(current_user.id), method: :delete %></button>
+          <button type="button" class="btn1"><%= link_to "Profile", user_path(current_user.id) %></button>
+        <% else %>
+          <button type="button" class="btn2"><%= link_to "Login", new_session_path %></button>
+          <button type="button" class="btn1"><%= link_to "Sign up", new_user_path %></button>
+        <% end %>
+      </div>
+      </header>
+      <img src="/assets/InstagramDarkMode.jpg" class="igdark">
+      <div>
+        <%= yield %>
+      </div>
+</div>
+  </body>
+
+</html>

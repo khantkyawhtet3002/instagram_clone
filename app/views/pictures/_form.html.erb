@@ -1,0 +1,30 @@
+<%= form_with(model: @picture, local: true ,url: choose_new_or_edit ) do |form| %>
+  <% if @picture.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @picture.errors.count %>There are some errors.</h2>
+      <ul>
+      <% @picture.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="picture_title">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div><br>
+  <div class="picture_title">
+    <%= form.label :content %>
+    <%= form.text_field :content %>
+  </div><br>
+  <div class="form-group">
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+    <%= form.hidden_field :image_cache %>
+    <%= image_tag @picture.image_url if @picture.image? %>
+  </div><br>
+    <p><%= form.check_box :remove_image %> If you want to delete the image, please check here</p>
+    <%= form.submit "Post" %>
+<% end %>
+<br>
+<button type="button" class="btn"><%= link_to 'My Posts', pictures_path %></button>

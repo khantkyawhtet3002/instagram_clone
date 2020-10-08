@@ -1,0 +1,14 @@
+<h3>Send with the following contents.</h3>
+<%= form_with(model: @picture, local: true) do |form| %>
+  <%= form.hidden_field :title %>
+  <%= form.hidden_field :content %>
+  <%= form.hidden_field :image_cache %>
+  <p class="font">Title:<%= @picture.title %></p>
+  <p class="font">Content:<%= @picture.content %></p>
+  <p>
+    <strong>Picture:</strong>
+    <%= image_tag @picture.image.url if @picture.image? %>
+  </p>
+  <%= form.submit  "Post" %>
+  <%= form.submit "Back" , name: 'back' %>
+<% end %>

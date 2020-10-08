@@ -1,0 +1,14 @@
+<div class="wrapper">
+  <h2>Welcome <%= @user.name %></h2>
+  <p><strong>Email Address</strong>: <%= @user.email %></p>
+  <p id = "notice"><%= notice %></p>
+  <p class="font">
+    <strong>Profile Picture:</strong>
+    <br>
+    <%= image_tag @user.image.url if @user.image? %>
+  </p>
+  <br>
+  <button type="button" class="btn"><%= link_to 'Edit', edit_user_path %></button>
+  <button type="button" class="btn"><%= link_to 'Your Posts', pictures_path %></button>
+  <button type="button" class="btn"><%= link_to("Favorites", "/users/#{@user.id}/favorites") %></button>
+</div>
