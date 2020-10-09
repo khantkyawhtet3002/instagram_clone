@@ -10,6 +10,5 @@
   <% else %>
     <%= link_to 'Create Favorite', favorites_path(picture_id: @picture.id), method: :post, class: 'btn btn-primary' %>
   <% end %>
-<% end %>
-<br>
+<% end %><br>
 <button type="button" class="btn"><%= link_to 'Posts List', pictures_path %></button>
